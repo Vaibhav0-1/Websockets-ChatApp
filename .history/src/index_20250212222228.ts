@@ -1,4 +1,4 @@
-import { WebSocketServer, WebSocket } from "ws";
+import { WebSocketServer,  } from "ws";
 
 const wss = new WebSocketServer({ port: 8080 });
 
@@ -13,10 +13,7 @@ wss.on("connection", (socket) => {
 
     socket.on("message", (message) => {
         console.log("message received " + message.toString());
-        for(let i=0; i<allSockets.length; i++){
-            const s = allSockets[i];
-            s.send(message.toString() + " from server");
-        }
+        socket.send(message.toString() + " from server")
 
 
     })

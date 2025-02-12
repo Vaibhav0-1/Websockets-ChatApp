@@ -14,7 +14,7 @@ wss.on("connection", (socket) => {
     socket.on("message", (message) => {
         console.log("message received " + message.toString());
         for(let i=0; i<allSockets.length; i++){
-            const s = allSockets[i];
+            const s = allSockets;
             s.send(message.toString() + " from server");
         }
 

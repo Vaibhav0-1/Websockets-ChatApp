@@ -1,23 +1,18 @@
-import { WebSocketServer, WebSocket } from "ws";
-
-const wss = new WebSocketServer({ port: 8080 });
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const ws_1 = require("ws");
+const wss = new ws_1.WebSocketServer({ port: 8080 });
 let userCount = 0;
-let allSockets: WebSocket[] = [];
-
+let allSockets = [];
 wss.on("connection", (socket) => {
     allSockets.push(socket);
-
     userCount++;
     console.log("user connected #" + userCount);
-
     socket.on("message", (message) => {
         console.log("message received " + message.toString());
-        for(let i=0; i<allSockets.length; i++){
+        for (let i = 0; i < allSockets.length; i++) {
             const s = allSockets[i];
             s.send(message.toString() + " from server");
         }
-
-
-    })
-})
+    });
+});
