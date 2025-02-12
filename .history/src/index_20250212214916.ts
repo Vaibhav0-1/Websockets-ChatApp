@@ -2,9 +2,8 @@ import { WebSocketServer } from "ws";
 
 const wss = new WebSocketServer({ port: 8080 });
 
-let userCount = 0;
+let userCount = 
 
 wss.on("connection", (sokcet) => {
-    console.log("user Connected");
-    userCount++;
+    console.log("user Connected")
 })
