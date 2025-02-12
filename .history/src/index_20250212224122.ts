@@ -14,8 +14,8 @@ wss.on("connection", (socket) => {
         allSockets.forEach(s =>{
             s.send(message.toString() + " from server");
         })
-    })
-    socket.on("disconnect", () => {
-        allSockets = allSockets.filter(x => x !== socket);
+        
+            
+        
     })
 })

@@ -10,12 +10,9 @@ wss.on("connection", (socket) => {
     console.log("user connected #");
 
     socket.on("message", (message) => {
-        console.log("message received " + message.toString())
-        allSockets.forEach(s =>{
+        console.log("message received " + message.toString());
+        
             s.send(message.toString() + " from server");
-        })
-    })
-    socket.on("disconnect", () => {
-        allSockets = allSockets.filter(x => x !== socket);
+        }
     })
 })
