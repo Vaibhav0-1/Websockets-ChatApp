@@ -1,0 +1,32 @@
+import { WebSocketServer, WebSocket } from "ws";
+
+const wss = new WebSocketServer({ port: 8080 });
+
+interface User{
+    socket: WebSocket;
+    room: string;
+}
+
+let allSockets: User[] = [];
+
+wss.on("connection", (socket) => {
+    socket.on("message", (message) => {
+        const parsedMessage = JSON.parse(message.toString());// str to obj
+        if(parsedMessage.type === "join"){
+            allSockets.push({
+                socket,
+                room: parsedMessage.payload.roomId
+            })
+        }
+
+        if(parsedMessage.type == "chat"){
+            
+        }
+
+
+
+    })
+    socket.on("disconnect", () => {
+        allSockets = allSockets.filter(x => x.socket !== socket);
+    })
+})

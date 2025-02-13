@@ -22,7 +22,7 @@ wss.on("connection", (socket) => {
         }
 
         if(parsedMessage.type == "chat"){
-            console.log("user sent a message " + parsedMessage.payload.message)
+            
             //const currentUserRoom = allSockets.find((x) => x.socket == socket)?.room
             //what is the room of this user 
             let currentUserRoom = null;
